@@ -1,0 +1,10 @@
+Shape;How Distinctive is this item's shape?
+texture;Does it have a strongly associated, unique texture?
+Complex;How visually complex is this item
+harm;How likely is this item to be harmful?
+pos_emotion;How pleasant is this item?
+Social;How social is this item? 
+Size;How big is this item?
+Place;Do you associate this item with a particular place?
+Attention;How attention grabbing is this item?
+Place;How much you associate this item with a particular place?

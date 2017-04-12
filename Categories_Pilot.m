@@ -1,5 +1,9 @@
 myStimuli = get_myStimuli
 
+fn = '/Users/aidasaglinskas/Desktop/Categories_Experiment/exp_questions.xlsx';
+tasks = readtable(fn);
+
+
 
 
 [windowPtr,rect] = Screen('OpenWindow',0,[],[0 0 640 480])
