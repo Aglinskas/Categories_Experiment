@@ -21,6 +21,9 @@ im_url = src(h:choose_j+3);
 itm_name = this_name;
 ofn = '/Users/aidasaglinskas/Desktop/Categories_Experiment/downloads/';
 o = fullfile(ofn,[itm_name num2str(wh_j) '.jpg']);
+
+% dir names{n} ofn unitl 3
+
 try 
     urlwrite(im_url,o,'Timeout',10);
 catch
