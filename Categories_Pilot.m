@@ -2,7 +2,6 @@ clear all
 myStimuli = get_myStimuli
 
 
-
 ptb.opt.ins_text_size = 50;
 ptb.opt.wordsize = 100;
 ptb.opt.Font = 'Helvetica';
@@ -44,9 +43,10 @@ Screen('TextSize', win,ptb.opt.wordsize);
                         % do fuck all
             %[keyIsDown, secs, keyCode, deltaSecs] = KbCheck([deviceNumber])
             [keyIsDown, secs, keyCode] = KbCheck();
-                    if keyIsDown
+                    if keyIsDown == 1 && is_pressed == 0
                        myStimuli(trial_ind).resp = KbName(keyCode)
-                       break
+                       is_pressed = 1;
+                       %break
                     end
             end
 
