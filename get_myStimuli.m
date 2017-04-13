@@ -61,12 +61,12 @@ available_block_lengts = 105 ./ available_block_div;
 
 %available_block_lengts = 35    21    15     7     5     3     1
 %block_length = 21;
-block_length = available_block_lengts(1)
+block_length = available_block_lengts(2)
 o = 1:block_length:l_t;
 n_blocks = length(o);
 
 range1 = [1:n_blocks];
-%range1 = Shuffle(range1);
+range1 = Shuffle(range1);
 b_temp = num2cell(range1);
 %b_temp = Shuffle(b_temp)
 
@@ -78,7 +78,7 @@ for i = o
 end
 
 % Finally Sort Randomised block order
-%[~,index] = sortrows([myStimuli.b_ind].'); myStimuli = myStimuli(index); clear index;
+[~,index] = sortrows([myStimuli.b_ind].'); myStimuli = myStimuli(index); clear index;
 
 %myStimuli = Shuffle(myStimuli)
 %mat = [[myStimuli.cat_ind]' [myStimuli.task_ind]' ./10];

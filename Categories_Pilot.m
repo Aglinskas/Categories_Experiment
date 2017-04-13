@@ -6,12 +6,19 @@ myStimuli = get_myStimuli
 
 ptb.opt.ins_text_size = 50;
 ptb.opt.wordsize = 100;
+ptb.opt.fix_crossSize = 100
 ptb.opt.Font = 'Helvetica';
+ptb.ScreenSize = [0 0 640 480]
+
+exp_opts.t_fixCross = 1;
+exp_opts.t_query= 10;
+exp_opts.t_to_respond= 5;
+
 
 
 scr_available = Screen('Screens');
 scr_this = scr_available(3)
-[win,rect] = Screen('OpenWindow',scr_this,[],[0 0 640 480])
+[win,rect] = Screen('OpenWindow',scr_this,[],ptb.ScreenSize)
 Screen('TextFont', win,ptb.opt.Font); % font set
 
 blocks = unique([myStimuli.b_ind]);
@@ -27,12 +34,24 @@ for trial_ind = b_trials
         [nx, ny, textbounds] = DrawFormattedText(win,ins_string,'center','center',[]);
         [vbl t_onset] = Screen('Flip', win);
         
-        while GetSecs < t_onset+3
-            % do fuck all
-        end
-        %[vbl t_onset] = Screen('Flip', win);
+        %is_pressed = 0;
+        keyIsDown = 0;
+        while GetSecs < t_onset + exp_opts.t_query & ~keyIsDown
+        [keyIsDown, secs, keyCode] = KbCheck();
+            if keyIsDown
+                pause(.5)
+            end
+        end% ends while checking
             end % ends trial if statement 
-    
+
+% fixation cross
+Screen('TextSize', win,ptb.opt.fix_crossSize);
+[nx, ny, textbounds] = DrawFormattedText(win,'+','center','center',[1]);
+[vbl t_onset] = Screen('Flip', win);
+
+while GetSecs < t_onset + exp_opts.t_fixCross
+   % does fuck all 
+end
 
 
 this_stim = myStimuli(trial_ind).item_name;
@@ -42,15 +61,15 @@ Screen('TextSize', win,ptb.opt.wordsize);
 
             % Collect response
             is_pressed = 0;
-            while GetSecs < t_onset+5 && ~is_pressed
+            while GetSecs < t_onset + exp_opts.t_to_respond & ~is_pressed
             [keyIsDown, secs, keyCode] = KbCheck();
                     if keyIsDown && ~is_pressed
                        myStimuli(trial_ind).resp = KbName(keyCode)
                        is_pressed = 1;
                             % If key is presssed light up the word
-                            [nx, ny, textbounds] = DrawFormattedText(win,this_stim,'center','center',[255 255 0]);
+                            [nx, ny, textbounds] = DrawFormattedText(win,this_stim,'center','center',[0 255 0]);
                             [vbl t_onset] = Screen('Flip', win);
-                            pause(.2)
+                            pause(.5)
                     end
             end
 
