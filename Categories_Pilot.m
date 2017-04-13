@@ -1,4 +1,6 @@
 clear all
+sca
+commandwindow
 myStimuli = get_myStimuli
 
 
@@ -24,6 +26,7 @@ for trial_ind = b_trials
             Screen('TextSize', win,ptb.opt.ins_text_size);
         [nx, ny, textbounds] = DrawFormattedText(win,ins_string,'center','center',[]);
         [vbl t_onset] = Screen('Flip', win);
+        
         while GetSecs < t_onset+3
             % do fuck all
         end
@@ -39,14 +42,15 @@ Screen('TextSize', win,ptb.opt.wordsize);
 
             % Collect response
             is_pressed = 0;
-            while GetSecs < t_onset+3
-                        % do fuck all
-            %[keyIsDown, secs, keyCode, deltaSecs] = KbCheck([deviceNumber])
+            while GetSecs < t_onset+5 && ~is_pressed
             [keyIsDown, secs, keyCode] = KbCheck();
-                    if keyIsDown == 1 && is_pressed == 0
+                    if keyIsDown && ~is_pressed
                        myStimuli(trial_ind).resp = KbName(keyCode)
                        is_pressed = 1;
-                       %break
+                            % If key is presssed light up the word
+                            [nx, ny, textbounds] = DrawFormattedText(win,this_stim,'center','center',[255 255 0]);
+                            [vbl t_onset] = Screen('Flip', win);
+                            pause(.2)
                     end
             end
 
