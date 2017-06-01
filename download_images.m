@@ -1,4 +1,5 @@
-url_temp = 'http://www.bing.com/images/search?q=%s&qs=n&form=QBLH&scope=images&sp=-1&pq=tobacco&sc=9-4&sk=&cvid=6F0C8B2A4AD446768332D2F9699587A4';
+%url_temp = 'http://www.bing.com/images/search?q=%s&qs=n&form=QBLH&scope=images&sp=-1&pq=tobacco&sc=9-4&sk=&cvid=6F0C8B2A4AD446768332D2F9699587A4';
+url_temp = 'http://www.bing.com/images/search?sp=-1&pq=%s&sc=8-3&sk=&cvid=EEC350F9B42C47BBBD5BCDB3FC4B9EDD&q=%s&qft=+filterui:aspect-square+filterui:color2-FGcls_WHITE&FORM=R5IR20';
 stimuli_list_fn = 'Stimuli.xlsx';
 T = readtable(stimuli_list_fn);
 temp = T.Variables;
@@ -10,7 +11,7 @@ for n = 1:length(names)
 %url_temp = 'http://www.bing.com/images/search?&q=%s&qft=+filterui:photo-transparent+filterui:aspect-square&FORM=R5IR27'
 this_name = names{n};
 disp(sprintf('DLing %d/%d :%s',n,length(names),this_name))
-url = sprintf(url_temp,this_name);
+url = sprintf(url_temp,this_name,this_name);
 src = urlread(url);
 %%
 warning('off')

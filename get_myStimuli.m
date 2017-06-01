@@ -1,6 +1,7 @@
 function myStimuli = get_myStimuli
 Q_fn = 'exp_questions.xlsx';
 Stim_fn = 'Stimuli.xlsx';
+picdir = './downloads/DLed/';
 
 Q = readtable(Q_fn);
 Stim = readtable(Stim_fn);
