@@ -1,9 +1,7 @@
 clear all
 sca
 commandwindow
-myStimuli = get_myStimuli
-
-
+myStimuli = get_myStimuli % gets the myStimuli struct that has all the exp info
 ptb.opt.ins_text_size = 50;
 ptb.opt.wordsize = 100;
 ptb.opt.fix_crossSize = 100
@@ -11,10 +9,8 @@ ptb.opt.Font = 'Helvetica';
 ptb.ScreenSize = [0 0 640 480]
 
 exp_opts.t_fixCross = 1;
-exp_opts.t_query= 10;
+exp_opts.t_quersc
 exp_opts.t_to_respond= 5;
-
-
 
 scr_available = Screen('Screens');
 scr_this = scr_available(3)
@@ -72,6 +68,5 @@ Screen('TextSize', win,ptb.opt.wordsize);
                             pause(.5)
                     end
             end
-
 end %ends trial loop
 end %ends block loop
