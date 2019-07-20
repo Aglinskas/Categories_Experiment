@@ -8,7 +8,7 @@ Hi Gabby,
 cd Categories_Experiment
 addpath(Scripts)
 addpath(Gabby-Scripts)
-Replicate_ROI_RSA.m
+Replicate_ROI_RSA
 ```
 
 Aidas
