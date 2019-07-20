@@ -1,17 +1,19 @@
 # Categories Experiment
 
-
-
+## Replicating Results 
 Hi Gabby, 
-1 - To replicate AG-L results, 
-	```matlab 
-	cd Categories_Experiment
-	addpath(Scripts)
-	addpath(Gabby-Scripts)
-	Replicate_ROI_RSA.m
-	```
+ - To replicate AG-L results, 
+ 
+```matlab
+cd Categories_Experiment
+addpath(Scripts)
+addpath(Gabby-Scripts)
+Replicate_ROI_RSA.m
+```
+
 Aidas
 
+## More Detailed description
 
     ExtractNetRSAdata.m
 
