@@ -9,7 +9,7 @@ pval = table{t_ind,p_ind};
 if pval < .001;
     p_str = '< .001';
 else
-    p_str = ['= ' num2str(pval,'%.3f')]
+    p_str = ['= ' num2str(pval,'%.3f')];
 end
 fs = sprintf('F(%d,%d) = %.3f, p %s',table{t_ind,df_ind},table{e_ind,df_ind},table{t_ind,F_ind},p_str);
 disp(fs)
