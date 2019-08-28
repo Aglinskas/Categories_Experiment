@@ -1,8 +1,9 @@
-load('/Users/aidasaglinskas/Google Drive/Aidas/Categories_Experiment/Scripts/subvec.mat')
-load('/Users/aidasaglinskas/Google Drive/Aidas/Categories_Experiment/Scripts/mats/cat_names.mat')
+code_root = '/Users/aidasaglinskas/Desktop/Categories_Experiment/';
+load(fullfile(code_root,'/Scripts/subvec.mat'))
+load(fullfile(code_root,'/Scripts/mats/cat_names.mat'))
 cat_names([5 18]) = [];
 %%
-mt_fn_temp = '/Users/aidasaglinskas/Google Drive/Aidas/Categories_Experiment/fMRI_Data/S%d/S%.2i_P1_myTrials_fixed.mat';
+mt_fn_temp = fullfile(code_root,'/fMRI_Data/S%d/S%.2i_P1_myTrials_fixed.mat');
 subvec = 1:20;
 subvec([9 12]) = []
 for s = 1:length(subvec);
@@ -25,8 +26,8 @@ end % ends subs
 behav.mat_rt = RT;
 behav.mat_resp = resp;
 behav.lbls = cat_names;
-save('/Users/aidasaglinskas/Desktop/behav.mat','behav')
-%%
+%save('/Users/aidasaglinskas/Desktop/behav.mat','behav')
+%% Bar Plot
 mRT  = nanmean(RT);
 %mRT = mRT-mean(mRT)
 eRT = nanstd(RT);
@@ -54,7 +55,7 @@ end
 
 behav.RDM_RT = distmat_RT;
 behav.RDM_Rating = distmat_resp;
-save('/Users/aidasaglinskas/Desktop/behav.mat','behav')
+%save('/Users/aidasaglinskas/Desktop/behav.mat','behav')
 %% Pdist
 m = {nanmean(distmat_resp,3), nanmean(distmat_RT,3)};
 m_ind = 2;
