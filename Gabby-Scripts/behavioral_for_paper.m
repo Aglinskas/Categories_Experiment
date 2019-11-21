@@ -31,6 +31,12 @@ behav.lbls = cat_names;
 %behav.mat_rt = behav.mat_rt(3:end,:)
 %behav.mat_resp = behav.mat_resp(3:end,:)
 % First three subjects have all nans in the second run
+
+varnames = behav.lbls;
+varnames = strrep(varnames,' ','_');
+varnames = strrep(varnames,'&','');
+varnames = strrep(varnames,'__','_');
+T = array2table(behav.mat_rt,'variablenames',varnames)
 %% Living non-living RT differences
 living = {'animali acquatici' 'insetti & rettili' 'animali  domestici' 'animali  esotici'  'uccelli' 'frutta e vegetali' 'flora' 'cibo & bevande'};
 non_living = {'vestiti' 'strumenti musicali' 'utensili' 'cose di casa' 'materiali' 'trasporto & movimento'  'parti del corpo' 'natura'};
@@ -43,18 +49,18 @@ nlmat = nanmean(behav.mat_rt(:,ismember(behav.lbls,non_living)),2);
 %lmat = nanmean(behav.mat_resp(:,ismember(behav.lbls,living)),2);
 %nlmat = nanmean(behav.mat_resp(:,ismember(behav.lbls,non_living)),2);
 clc; disp('RT difference between living > non-living')
-[H,P,CI,STATS] = ttest(lmat,nlmat);
+[H,P,CI,STATS] = ttest(lmat(4:end),nlmat(4:end));
 t_statement(STATS,P);
 % should be t(17) = 0.62,p = 0.545
 %or t(15) = 0.94,p = 0.362
 %% ANOVA - RT differences between categories
 %[pRT, tableRT] = anova_rm(behav.mat_rt,'off');
-[pRT, tableRT] = anova_rm(behav.mat_rt(3:end,:),'off');
+[pRT, tableRT] = anova_rm(behav.mat_rt(4:end,:),'off');
 disp('ANOVA RT differences between categories')
 F_statement(tableRT)
 %% ANOVA - rating differences between categories
 %[pResp, tableResp] = anova_rm(behav.mat_rt,'off');
-[pResp, tableResp] = anova_rm(behav.mat_resp(3:end,:),'off');
+[pResp, tableResp] = anova_rm(behav.mat_resp(4:end,:),'off');
 disp('ANOVA response differences between categories')
 F_statement(tableResp)
 
