@@ -132,7 +132,6 @@ add_numbers_to_mat(cmat1);
 xticks(1:16);yticks(1:16);
 xticklabels(behav.lbls_eng);xtickangle(65)
 yticklabels(behav.lbls_eng);
-title('RT RDM','fontsize',20)
 
 subplot(2,2,2)
 m = mean(behav.mat_resp,1);
@@ -141,8 +140,6 @@ add_numbers_to_mat(cmat2);
 xticks(1:16);yticks(1:16);
 xticklabels(behav.lbls_eng);xtickangle(65)
 yticklabels(behav.lbls_eng);
-title('Rating RDM','fontsize',20)
-
 
 sp = subplot(2,2,3)
 Z = linkage(get_triu(cmat1))
@@ -150,8 +147,6 @@ Z = linkage(get_triu(cmat1))
 [h(1:end).LineWidth] = deal(3)
 xtickangle(90)
 sp.FontSize=12;sp.FontWeight='bold'
-xtickangle(65)
-title('RT RDM','fontsize',20)
 
 sp = subplot(2,2,4)
 Z = linkage(get_triu(cmat2))
@@ -159,8 +154,6 @@ Z = linkage(get_triu(cmat2))
 [h(1:end).LineWidth] = deal(3)
 xtickangle(90)
 sp.FontSize=12;sp.FontWeight='bold'
-xtickangle(65)
-title('Rating RDM','fontsize',20)
 
 behav.RSA_RT = cmat1;
 behav.RSA_resp = cmat2;
@@ -176,7 +169,7 @@ txt = sprintf('r=%.2f, p=%.3f',RHO,PVAL);txt=strrep(txt,'0.','.');
 disp(txt)
 %%
 
-%save(fullfile(code_root,'Review','Code','behav.mat'),'behav')
+
 
 
 
